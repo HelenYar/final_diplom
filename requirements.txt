@@ -1,0 +1,10 @@
+django
+djangorestframework
+django-rest-passwordreset
+psycopg2-binary
+pyyaml
+ujson
+requests
+celery
+uritemplate
+drf-spectacular
