@@ -1,6 +1,5 @@
 from distutils.util import strtobool
 from django.contrib.auth import authenticate
-from django.core.paginator import Paginator
 from django.db import IntegrityError
 from django.db.models import Q, Sum, F
 

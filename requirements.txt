@@ -8,3 +8,5 @@ requests
 celery
 uritemplate
 drf-spectacular
+pytest
+pytest-django
