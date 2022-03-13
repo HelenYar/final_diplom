@@ -15,10 +15,11 @@ SECRET_KEY = 'django-insecure-2j3lzob*&r&p%g^3_0b-v*_q0467f2sh12b)_j)sadi&o!@4t(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -35,6 +36,8 @@ INSTALLED_APPS = [
 
     'backend'
 ]
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -128,13 +131,16 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'helyar.netology.fd@gmail.com'
 EMAIL_HOST_PASSWORD = '123hy123'
-EMAIL_PORT = 587
+# EMAIL_USE_SSL = True
+# EMAIL_PORT = '465'
 EMAIL_USE_TLS = True
+EMAIL_PORT = '587'
 SERVER_EMAIL = EMAIL_HOST_USER
 
-AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.AllowAllUsersModelBackend']
 
-# DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.AllowAllUsersModelBackend']
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
@@ -149,11 +155,9 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
     ),
 
-    # 'DEFAULT_PERMISSION_CLASSES': (
-    #
-    #      'rest_framework.permissions.IsAuthenticated',
-    #
-    # ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.AllowAny',
+    ),
 
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 
@@ -166,16 +170,23 @@ REST_FRAMEWORK = {
     'DEFAULT_THROTTLE_RATES': {
         'anon': '100/day',
         'user': '100/day',
+        'emails': '100/day',
         'register': '50/day',
 
     }
 }
 
+CELERY_BROKER_URL = 'redis://localhost:6379/1'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/2'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+
 
 SPECTACULAR_SETTINGS = {
-    'TITLE': 'Your Project API',
-    'DESCRIPTION': 'Your project description',
-    'VERSION': '1.0.0',
-    # OTHER SETTINGS
-    # 'SERVERS': [{'url': 'http://localhost:8000'}],
+    'TITLE': 'Python final diplom',
+    'DESCRIPTION': 'Python final diplom',
+    'VERSION': '1.0.0'
 }
+
+

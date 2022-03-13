@@ -5,12 +5,12 @@ Content-Type: application/json
 
 {
    "password":"",
-   "email":"helen.yarosh82@gmail.com",
-   "usertype":"shop",
-   "first_name":"El",
+   "email":"el_ya2000@mail.ru",
+   "usertype":"buyer",
+   "first_name":"Helen",
    "last_name":"Yar",
-   "company":"OOO",
-   "position":"mmm"
+   "company":"Faset",
+   "position":"m"
 }
 
 ###

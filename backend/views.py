@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate
 from django.db import IntegrityError
 from django.db.models import Q, Sum, F
 
-from rest_framework import viewsets, generics, filters, status
+from rest_framework import viewsets, generics,  status
 from rest_framework.authtoken.models import Token
 from rest_framework.generics import ListAPIView
 from rest_framework.permissions import IsAuthenticated
@@ -15,14 +15,12 @@ from requests import get
 from yaml import load as load_yaml, Loader
 from django.contrib.auth.password_validation import validate_password
 from rest_framework.response import Response
-from ujson import loads as load_json
-import json
 
 from backend.models import Shop, Category, Product, ProductInfo, Parameter, ProductParameter, Order, OrderItem, \
     Contact, ConfirmEmailToken, User
 from backend.serializers import UserSerializer, CategorySerializer, ShopSerializer, ProductInfoSerializer, \
     OrderItemSerializer, OrderSerializer, ContactSerializer
-from backend.signals import new_user_registered, new_order
+from backend.tasks import new_user_registered, new_order
 
 from drf_spectacular.utils import extend_schema
 
@@ -58,7 +56,9 @@ class RegisterAccount(APIView):
                     user = user_serializer.save()
                     user.set_password(request.data['password'])
                     user.save()
-                    new_user_registered.send(sender=self.__class__, user_id=user.id)
+                    # new_user_registered.send(sender=self.__class__, user_id=user.id)
+                    new_user_registered.delay(user_id=user.id)
+
                     return Response({'Status': True}, status=status.HTTP_201_CREATED)
                 else:
                     return Response({'Status': False, 'Errors': user_serializer.errors},
@@ -559,7 +559,9 @@ class OrderView(APIView):
                 else:
                     if is_updated:
                         print('1')
-                        new_order.send(sender=self.__class__, user_id=request.user.id)
+                        # new_order.send(sender=self.__class__, user_id=request.user.id)
+                        new_order.delay(user_id=request.user.id)
+
                         return Response({'Status': True})
 
         return Response({'Status': False, 'Errors': 'Не указаны все необходимые аргументы'},
