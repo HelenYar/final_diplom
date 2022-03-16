@@ -20,7 +20,7 @@ Content-Type: application/json
 
 {
   "email":"helen.yarosh82@gmail.com",
-  "token": "05319428dc006e3c6ae5a7e"
+  "token": ""
 
 }
 
@@ -37,7 +37,7 @@ Content-Type: application/json
 ###
 #данными пользователя
 GET http://127.0.0.1:8000/api/v1/user/details
-Authorization: Token c012215cf15858e5fdee8f723bb82b0a6a95053e
+Authorization: Token
 Content-Type: application/json
 
 {
@@ -48,7 +48,7 @@ Content-Type: application/json
 ###
 #
 POST http://127.0.0.1:8000/api/v1/user/password_reset
-Authorization: Token c012215cf15858e5fdee8f723bb82b0a6a95053e
+Authorization: Token
 Content-Type: application/json
 
 {
@@ -63,7 +63,7 @@ Content-Type: application/json
 {
    "email":"helen_yarosh@mail.ru",
    "password":"",
-   "token":"4733a0f67a7bd9e3d854fcb1a06d4a36e5adcaaacc743dad4"
+   "token":""
 }
 
 
@@ -71,7 +71,7 @@ Content-Type: application/json
 #для обновления прайса от поставщика(формирует актуальный каталог)
 POST http://127.0.0.1:8000/api/v1/partner/update
 Content-Type: application/json
-Authorization: Token 4160e031e4597ce6e4d5e9d93c9b6b9cce3a4ff7
+Authorization: Token
 
 {
    "url":"https://raw.githubusercontent.com/netology-code/python-final-diplom/master/data/shop1.yaml"
@@ -86,7 +86,7 @@ Content-Type: application/json
 ###
 #обновляет статус магазина.
 POST http://127.0.0.1:8000/api/v1/partner/state
-Authorization: Token 4160e031e4597ce6e4d5e9d93c9b6b9cce3a4ff7
+Authorization: Token
 Content-Type: application/json
 
 {
@@ -96,19 +96,19 @@ Content-Type: application/json
 ###
 #заказы поставщика
 GET http://127.0.0.1:8000/api/v1/partner/orders
-Authorization: Token 4160e031e4597ce6e4d5e9d93c9b6b9cce3a4ff7
+Authorization: Token
 
 
 
 ###
 #дынные покупателя
 GET http://127.0.0.1:8000/api/v1/user/contact
-Authorization: Token c012215cf15858e5fdee8f723bb82b0a6a95053e
+Authorization: Token
 
 ###
 #сохраняет контактные дынные покупателя
 POST http://127.0.0.1:8000/api/v1/user/contact
-Authorization: Token c012215cf15858e5fdee8f723bb82b0a6a95053e
+Authorization: Token
 Content-Type: application/json
 
 {
@@ -121,7 +121,7 @@ Content-Type: application/json
 ###
 #обновляет контактные дынные покупателя
 PUT http://127.0.0.1:8000/api/v1/user/contact
-Authorization: Token c012215cf15858e5fdee8f723bb82b0a6a95053e
+Authorization: Token
 Content-Type: application/json
 
 {
@@ -135,7 +135,7 @@ Content-Type: application/json
 ###
 #удаляет контактные дынные покупателя
 DELETE http://127.0.0.1:8000/api/v1/user/contact
-Authorization: Token c012215cf15858e5fdee8f723bb82b0a6a95053e
+Authorization: Token
 Content-Type: application/json
 
 {
@@ -160,7 +160,7 @@ Authorization: Token c012215cf15858e5fdee8f723bb82b0a6a95053e
 ###
 #поиск товаров
 GET http://127.0.0.1:8000/api/v1/products
-Authorization: Token 4160e031e4597ce6e4d5e9d93c9b6b9cce3a4ff7
+Authorization: Token
 Content-Type: application/json
 
 {
@@ -172,7 +172,7 @@ Content-Type: application/json
 ###
 #возвращает информацию о товарах в корзине
 GET http://127.0.0.1:8000/api/v1/basket
-Authorization: Token c012215cf15858e5fdee8f723bb82b0a6a95053e
+Authorization: Token
 
 {
    "id":"2"
@@ -182,7 +182,7 @@ Authorization: Token c012215cf15858e5fdee8f723bb82b0a6a95053e
 #создает корзину для пользователя, размещая в ней товары и их количество
 POST http://127.0.0.1:8000/api/v1/basket
 Content-Type: application/json
-Authorization: Token c012215cf15858e5fdee8f723bb82b0a6a95053e
+Authorization: Token
 
 {
     "items":[
@@ -197,7 +197,7 @@ Authorization: Token c012215cf15858e5fdee8f723bb82b0a6a95053e
 #редактирует корзину
 PUT http://127.0.0.1:8000/api/v1/basket
 Content-Type: application/json
-Authorization: Token c012215cf15858e5fdee8f723bb82b0a6a95053e
+Authorization: Token
 
 {
     "items":[
@@ -223,7 +223,7 @@ Authorization: Token c012215cf15858e5fdee8f723bb82b0a6a95053e
 #Размещения заказа
 POST  http://localhost:8000/api/v1/order
 Content-Type: application/json
-Authorization: Token c012215cf15858e5fdee8f723bb82b0a6a95053e
+Authorization: Token
 
 {
     "id": "1",
@@ -234,7 +234,7 @@ Authorization: Token c012215cf15858e5fdee8f723bb82b0a6a95053e
 #заказы покупателя
 GET   http://localhost:8000/api/v1/order
 Content-Type: application/json
-Authorization: Token c012215cf15858e5fdee8f723bb82b0a6a95053e
+Authorization: Token
 
 
 
